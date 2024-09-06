@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NavbarLinks } from "./NavbarLinks";
 import { Button } from "@/components/ui/button";
 import { MobileMenu } from "./MobileMenu";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export function Navbar() {
   return (
@@ -15,7 +16,12 @@ export function Navbar() {
       </div>
       <NavbarLinks />
       <div className="flex items-center gap-x-2 ms-auto md:col-span-3">
-        <Button>Sign In</Button>
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
 
         <div className="md:hidden">
           <MobileMenu />
