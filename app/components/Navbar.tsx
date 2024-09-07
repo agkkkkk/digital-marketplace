@@ -1,8 +1,21 @@
+"use client";
 import Link from "next/link";
 import { NavbarLinks } from "./NavbarLinks";
 import { Button } from "@/components/ui/button";
 import { MobileMenu } from "./MobileMenu";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
+const DotIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      fill="currentColor"
+    >
+      <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
+    </svg>
+  );
+};
 
 export function Navbar() {
   return (
@@ -20,7 +33,15 @@ export function Navbar() {
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <UserButton>
+            <UserButton.MenuItems>
+              <UserButton.Link
+                label="Sell your Product"
+                labelIcon={<DotIcon />}
+                href="/sell"
+              />
+            </UserButton.MenuItems>
+          </UserButton>
         </SignedIn>
 
         <div className="md:hidden">
