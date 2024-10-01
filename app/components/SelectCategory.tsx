@@ -1,12 +1,14 @@
 "use client";
 import { Card, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { categoryItems } from "@/lib/categoryItems";
 import { useState } from "react";
 
 export function SelectCategory() {
-  const [selectedCategory, setSelectedCategory] = useState<String | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <Input type="hidden" name="category" value={selectedCategory || ""} />
       {categoryItems.map((item) => (
         <div key={item.id} className="cursor-pointer">
           <Card
